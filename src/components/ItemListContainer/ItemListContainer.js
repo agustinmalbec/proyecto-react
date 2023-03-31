@@ -1,24 +1,7 @@
-import products from "../../products/products";
 import ItemList from "../ItemList/ItemList";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-function getProductsFromDatabase() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(products);
-        }, 1000);
-    });
-}
-
-function getProductsFromDatabaseByCategory(idCat) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let prodFilter = products.filter((item) => item.category === idCat);
-            resolve(prodFilter);
-        }, 1000);
-    });
-}
+import { getProductsFromDatabase, getProductsFromDatabaseByCategory } from '../../services/firestore'
 
 function ItemListContainer({ greeting }) {
 
@@ -26,25 +9,35 @@ function ItemListContainer({ greeting }) {
     const idCategory = param.idCategory;
 
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
     async function readProducts() {
         if (idCategory === undefined) {
             let response = await getProductsFromDatabase();
             setProducts(response);
+            setLoading(false)
         } else {
             let response = await getProductsFromDatabaseByCategory(idCategory);
             setProducts(response);
+            setLoading(false)
         }
     }
 
     useEffect(() => {
         readProducts();
+        // eslint-disable-next-line
     }, [idCategory]);
+    
     return (
         <>
             <p>{greeting}</p>
-            <ItemList prod={products} />
+            {
+                loading
+                ?<p>Cargando...</p>
+                :<ItemList prod={products} />
+            }
+            
         </>
     );
 }

@@ -1,15 +1,9 @@
-import products from "../../products/products";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
-
-function getProductsFromDatabase(prodId) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let idFind = products.find((prod) => prod.id === Number(prodId))
-            resolve(idFind);
-        }, 1000);
-    });
-}
+import './styles.scss';
+import ItemCount from "../ItemCount/ItemCount";
+import cartContext from "../../context/cartContext";
+import { getProductFromDatabase } from '../../services/firestore';
 
 function ItemDetailContainer() {
 
@@ -19,22 +13,29 @@ function ItemDetailContainer() {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        getProductsFromDatabase(idProduct).then((response) => {
+        getProductFromDatabase(idProduct).then((response) => {
             setProduct(response);
         });
+        // eslint-disable-next-line
     }, []);
 
+    const {addProduct} = useContext(cartContext);
+
+    function onAddToCart(count){
+        addProduct(product, count);
+    }
+
     return (
-        <div className="item-list">
+        <div className="item-list container">
 
             <div key={product.id} className="item-card">
-                <h3>{product.title}</h3>
                 <div className="item-img-container">
                     <img src={product.image} alt={product.title} className="item-img" />
                 </div>
-                <p></p>
-                <p>Precio: ${product.price}</p>
-                <button>Agregar al carrito</button>
+                <h3 className="item-title">{product.title}</h3>
+                <p>{product.description}</p>
+                <p className="item-price">Precio: ${product.price}</p>
+                <ItemCount initial={1} stock={10} onAddToCart={onAddToCart}/>
             </div>
 
         </div>

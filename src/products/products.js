@@ -6,6 +6,8 @@ const products = [
         description: "Monitor de 24 pulgadas FullHD",
         category: "Monitor",
         image: "../media/img/tv24.jpg",
+        stock: 20,
+        offer: "",
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ const products = [
         description: "Monitor de 32 pulgadas 4K",
         category: "Monitor",
         image: "../media/img/tv32.jpg",
+        stock: 17,
+        offer: "",
     },
     {
         id: 3,
@@ -22,6 +26,8 @@ const products = [
         description: "Teclado mecanico con switches outemu red, compacto de 60%",
         category: "Teclado",
         image: "../media/img/teclado60.jpg",
+        stock: 8,
+        offer: 25,
     },
     {
         id: 4,
@@ -30,6 +36,8 @@ const products = [
         description: "Teclado mecanico completo con switches cherry brown",
         category: "Teclado",
         image: "../media/img/tecladofull.jpg",
+        stock: 10,
+        offer: 15,
     },
     {
         id: 5,
@@ -38,6 +46,8 @@ const products = [
         description: "Mouse inalambrico con conexion bluetooth y 2.4ghz",
         category: "Mouse",
         image: "../media/img/mousein.jpeg",
+        stock: 15,
+        offer: "",
     },
     {
         id: 6,
@@ -46,6 +56,8 @@ const products = [
         description: "Mouse cableado con luz RGB",
         category: "Mouse",
         image: "../media/img/mousecable.jpg",
+        stock: 10,
+        offer: "",
     },
     {
         id: 7,
@@ -54,6 +66,8 @@ const products = [
         description: "Mouse pad compacto",
         category: "MousePad",
         image: "../media/img/mousepad.jpg",
+        stock: 50,
+        offer: 50,
     },
     {
         id: 8,
@@ -62,6 +76,8 @@ const products = [
         description: "Mouse pad tama;o XXL",
         category: "MousePad",
         image: "../media/img/mousepadxxl.jpg",
+        stock: 43,
+        offer: 70,
     }
 ];
 

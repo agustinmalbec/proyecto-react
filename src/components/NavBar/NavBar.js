@@ -14,16 +14,16 @@ function NavBar() {
             <nav>
                 <ul className="navList">
                     <Link to="/category/Monitor">
-                        <li>Monitores</li>
+                        <li className='navListItem'>Monitores</li>
                     </Link>
                     <Link to="/category/Teclado">
-                        <li>Teclados</li>
+                        <li className='navListItem'>Teclados</li>
                     </Link>
-                    <Link to="category/Mouse">
-                        <li>Mouses</li>
+                    <Link to="/category/Mouse">
+                        <li className='navListItem'>Mouses</li>
                     </Link>
                     <Link to="/category/MousePad">
-                        <li>MousePads</li>
+                        <li className='navListItem'>MousePads</li>
                     </Link>
                 </ul>
             </nav>

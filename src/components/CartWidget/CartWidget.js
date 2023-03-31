@@ -1,18 +1,19 @@
 import { BsFillCartFill } from "react-icons/bs";
-import React, { useState } from "react";
-
+import { useContext } from "react";
+import cartContext from "../../context/cartContext";
+import { Link } from "react-router-dom";
 
 function CartWidget() {
 
-    const [num, setNum] = useState(0);
+    const {totalProductsInCart} = useContext(cartContext);
+    const count = totalProductsInCart()
 
     return (
         <div className="">
-            <a href="#">
+            <Link to="/Cart">
                 <BsFillCartFill />
-                <span>{num}</span>
-                <button onClick={() => setNum(num + 1)}>incrementar</button>
-            </a>
+                <span>{count}</span>
+            </Link>
         </div>
     );
 }
